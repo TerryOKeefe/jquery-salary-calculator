@@ -4,15 +4,20 @@ $(document).ready(readyNow);
 
 const employees = [];
 
+
 function readyNow() {
     // console log to test source in
     console.log('jQuery sourced');
     // check that collectEmployee function works
     $('.addButton').on('click', collectEmployee);
+    // append employees added to the DOM
+    
 }
 
 function collectEmployee(){
+    // log to show employee submitted
     console.log('Submit employee');
+    // variable object to capture input
     let employee = {
         firstName : $('#firstName').val(),
         lastName : $('#lastName').val(),
@@ -32,6 +37,16 @@ function collectEmployee(){
     $('#employeeId').val('');
     $('#employeeTitle').val('');
     $('#annualSalary').val('');
+    // append to the DOM
+    $('.employeeTable').append(`
+        <tr>
+            <td>${employee.firstName}</td>
+            <td>${employee.lastName}</td>
+            <td>${employee.empId}</td>
+            <td>${employee.title}</td>
+            <td>$${employee.empAnnualSalary}</td>
+        </tr>
+    `);
 
 }
 
