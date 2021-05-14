@@ -2,18 +2,20 @@ console.log('js loaded');
 
 $(document).ready(readyNow);
 
+// variable to hold employees
 const employees = [];
 
-
+// function to run when jQuery is ready
 function readyNow() {
     // console log to test source in
     console.log('jQuery sourced');
     // check that collectEmployee function works
     $('.addButton').on('click', collectEmployee);
-    // append employees added to the DOM
-    
-}
+    // delete employee information off the DOM
+    $('.employeeTable').on('click', '.deleteBtn', handleDelete); 
+} // end readyNow
 
+// Function to collect employees
 function collectEmployee(){
     // log to show employee submitted
     console.log('Submit employee');
@@ -38,18 +40,26 @@ function collectEmployee(){
     $('#employeeTitle').val('');
     $('#annualSalary').val('');
     // append to the DOM
+    // create a new table row
     $('.employeeTable').append(`
-        <tr>
+        <tr class="employeeRow">
             <td>${employee.firstName}</td>
             <td>${employee.lastName}</td>
             <td>${employee.empId}</td>
             <td>${employee.title}</td>
             <td>$${employee.empAnnualSalary}</td>
+            <td><button class="deleteBtn">Delete</button><td>
         </tr>
     `);
+} // end collectEmployee
 
-}
-
+// Function to handle delete
+function handleDelete() {
+    // log to show delete button clicked
+    console.log('clicked delete');
+    // target new created row and remove from DOM
+    $('.employeeRow').remove();
+} // end handleDelete
 
 
 console.log('js ended');
