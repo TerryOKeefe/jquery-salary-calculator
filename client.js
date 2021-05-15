@@ -27,7 +27,6 @@ function collectEmployee() {
         empId: $('#employeeId').val(),
         title: $('#employeeTitle').val(),
         empAnnualSalary: $('#annualSalary').val(),
-        // monthlySalary: $('#annualSalary').val() / 12
     }
 
     // push employee into const employees
@@ -101,7 +100,7 @@ function calcMonthlySalary() {
     // empty it
     emptyDomInput.empty();
     // append to the DOM 
-    emptyDomInput.append(Math.round(monthTotal));
+    emptyDomInput.append(`$ `, `${Math.round(monthTotal)}`);
     
 } // end calcMonthlySalary
 
