@@ -12,7 +12,7 @@ function readyNow() {
     // check that collectEmployee function works
     $('.addButton').on('click', collectEmployee);
     // delete employee information off the DOM
-    $('.employeeTable').on('click', '.deleteBtn', handleDelete); 
+    $('.employeeTable').on('click', '.deleteBtn', handleDelete);
 } // end readyNow
 
 // Function to collect employees
@@ -58,7 +58,7 @@ function handleDelete() {
     // log to show delete button clicked
     console.log('clicked delete');
     // target new created row and remove from DOM
-    $('.employeeRow').remove();
+    $(this).closest('.employeeRow').remove();
 } // end handleDelete
 
 
