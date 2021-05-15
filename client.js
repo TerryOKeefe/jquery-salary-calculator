@@ -6,8 +6,6 @@ $(document).ready(readyNow);
 const employees = [];
 let monthlyTotal = 0;
 
-
-
 // function to run when jQuery is ready
 function readyNow() {
     // console log to test source in
@@ -16,8 +14,6 @@ function readyNow() {
     $('.addButton').on('click', collectEmployee);
     // delete employee information off the DOM
     $('.employeeTable').on('click', '.deleteBtn', handleDelete);
-    // append salary to the DOM
-
 } // end readyNow
 
 // Function to collect employees
@@ -31,7 +27,7 @@ function collectEmployee() {
         empId: $('#employeeId').val(),
         title: $('#employeeTitle').val(),
         empAnnualSalary: $('#annualSalary').val(),
-        monthlySalary: $('#annualSalary').val() / 12
+        // monthlySalary: $('#annualSalary').val() / 12
     }
 
     // push employee into const employees
@@ -76,8 +72,6 @@ function employeeDOM() {
     }
 }
 
-
-
 // Function to handle delete
 function handleDelete() {
     // log to show delete button clicked
@@ -86,6 +80,7 @@ function handleDelete() {
     $(this).closest('.employeeRow').remove();
 } // end handleDelete
 
+// function to calculate monthly
 function calcMonthlySalary() {
     // create variable to hold numbers from salary
     let monthTotal = 0;
@@ -96,12 +91,19 @@ function calcMonthlySalary() {
         console.log('Monthly Costs:', monthTotal);
     }
 
+    if (monthTotal >= 20000) {
+        $('#monthlyTotal').css("background-color", "red");
+        console.log('Over Monthly Budget');
+    }
+    
     // variable to hold html tag
     let emptyDomInput = $('#monthlyTotal');
     // empty it
     emptyDomInput.empty();
     // append to the DOM 
     emptyDomInput.append(Math.round(monthTotal));
-}
+    
+} // end calcMonthlySalary
+
 
 console.log('js ended');
