@@ -4,6 +4,9 @@ $(document).ready(readyNow);
 
 // variable to hold employees
 const employees = [];
+let monthlyTotal = 0;
+
+
 
 // function to run when jQuery is ready
 function readyNow() {
@@ -13,6 +16,8 @@ function readyNow() {
     $('.addButton').on('click', collectEmployee);
     // delete employee information off the DOM
     $('.employeeTable').on('click', '.deleteBtn', handleDelete);
+    // append salary to the DOM
+    $('#monthlyTotal').append(monthlyTotal);
 } // end readyNow
 
 // Function to collect employees
@@ -25,33 +30,51 @@ function collectEmployee(){
         lastName : $('#lastName').val(),
         empId : $('#employeeId').val(),
         title : $('#employeeTitle').val(),
-        empAnnualSalary : $('#annualSalary').val()
+        empAnnualSalary : $('#annualSalary').val(),
+        monthlySalary : Number($('#annualSalary').val()) /12
     }
-    // console log to make sure employee gets added
-    // console.log(employee);
+
     // push employee into const employees
     employees.push(employee);
     // console log to show employees added
     console.log(employees);
-    // empty inputs
-    $('#firstName').val('');
-    $('#lastName').val('');
-    $('#employeeId').val('');
-    $('#employeeTitle').val('');
-    $('#annualSalary').val('');
+
+    emptyInputs();
+    employeeDOM();
+}
+
+// function to empty inputs on click
+function emptyInputs() {
+     // empty inputs
+     $('#firstName').val('');
+     $('#lastName').val('');
+     $('#employeeId').val('');
+     $('#employeeTitle').val('');
+     $('#annualSalary').val('');
+}
+
+// function to display employee on the DOM
+function employeeDOM() {
+    $('.employeeTable').empty();
     // append to the DOM
-    // create a new table row
+    for (let i = 0; i < employees.length; i++) {
+        let employeeInfo = employees[i];
+        
+    // create a new table row when looping through employees array
     $('.employeeTable').append(`
         <tr class="employeeRow">
-            <td>${employee.firstName}</td>
-            <td>${employee.lastName}</td>
-            <td>${employee.empId}</td>
-            <td>${employee.title}</td>
-            <td>$${employee.empAnnualSalary}</td>
+            <td>${employeeInfo.firstName}</td>
+            <td>${employeeInfo.lastName}</td>
+            <td>${employeeInfo.empId}</td>
+            <td>${employeeInfo.title}</td>
+            <td>$ ${employeeInfo.empAnnualSalary}</td>
             <td><button class="deleteBtn">Delete</button><td>
         </tr>
     `);
-} // end collectEmployee
+    }
+}
+   
+
 
 // Function to handle delete
 function handleDelete() {
@@ -61,5 +84,23 @@ function handleDelete() {
     $(this).closest('.employeeRow').remove();
 } // end handleDelete
 
+function calcMonthlySalary() {
+    // log to check that function works when submit is clicked
+    console.log('Run monthly costs');
+    // variable to hold salaries
+    //let monthlyTotal;
+    // loop through employee array
+    for (const month of employees) {
+        console.log('Added Salary:', month.empAnnualSalary);
+        // monthlyTotal = 0;
+        monthlyTotal += Number(month.empAnnualSalary);
+        console.log('Should add:', monthlyTotal);
+        
+        return monthlyTotal;
+    }
+    
+    
+    
+}
 
 console.log('js ended');

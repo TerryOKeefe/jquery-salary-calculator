@@ -1,51 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salary Calculator</title>
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="jquery-3.6.0.js"></script>
-    <script src="client.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salary Calculator</title>
+  <link rel="stylesheet" href="bootstrap.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="jquery-3.6.0.js"></script>
+  <script src="client.js"></script>
 </head>
+
 <body>
-    <header>
-        <h1>Salary Calculator</h1>
-    </header>
+  <header>
+    <h1>Salary Calculator</h1>
+  </header>
 
-    <section>
-        <input type="text" placeholder="First Name" id="firstName">
-        <input type="text" placeholder="Last Name" id="lastName">
-        <input type="number" placeholder="Employee ID" id="employeeId">
-        <input type="text" placeholder="Title" id="employeeTitle">
-        <input type="text" placeholder="Annual Salary" id="annualSalary">
-        <button class="addButton" id="submit">Submit</button>
-    </section>
+  <section>
+    <h3>Add Employee</h3>
+    <input type="text" placeholder="First Name" id="firstName">
+    <input type="text" placeholder="Last Name" id="lastName">
+    <input type="number" placeholder="Employee ID" id="employeeId">
+    <input type="text" placeholder="Title" id="employeeTitle">
+    <input type="text" placeholder="Annual Salary" id="annualSalary">
+    <button class="addButton" id="submit">Submit</button>
+  </section>
 
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">ID</th>
-            <th scope="col">Title</th>
-            <th scope="col">Annual Salary</th>
-            <th scope="col">Delete</th>
-          </tr>
-        </thead>
-        <tbody class="employeeTable">
-          <!-- <tr>
+  <main>
+    <h3>Employees</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">ID</th>
+          <th scope="col">Title</th>
+          <th scope="col">Annual Salary</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody class="employeeTable">
+        <!-- <tr>
             <td id="firstTd"></td>
             <td id="lastTd"></td>
             <td id="idTd"></td>
             <td id="titleTd"></td>
             <td id="salaryTd"></td>
           </tr> -->
-        </tbody>
-      </table>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <h3>Total Monthly: $<span id="monthlyTotal"></span></h3>
+  </footer>
 
 
 </body>
+
 </html>
