@@ -17,7 +17,7 @@ function readyNow() {
     // delete employee information off the DOM
     $('.employeeTable').on('click', '.deleteBtn', handleDelete);
     // append salary to the DOM
-    $('#monthlyTotal').append(monthlyTotal);
+    
 } // end readyNow
 
 // Function to collect employees
@@ -31,7 +31,7 @@ function collectEmployee(){
         empId : $('#employeeId').val(),
         title : $('#employeeTitle').val(),
         empAnnualSalary : $('#annualSalary').val(),
-        monthlySalary : Number($('#annualSalary').val()) /12
+        monthlySalary : $('#annualSalary').val() / 12
     }
 
     // push employee into const employees
@@ -41,6 +41,8 @@ function collectEmployee(){
 
     emptyInputs();
     employeeDOM();
+    calcMonthlySalary();
+    
 }
 
 // function to empty inputs on click
@@ -85,22 +87,13 @@ function handleDelete() {
 } // end handleDelete
 
 function calcMonthlySalary() {
-    // log to check that function works when submit is clicked
-    console.log('Run monthly costs');
-    // variable to hold salaries
-    //let monthlyTotal;
-    // loop through employee array
-    for (const month of employees) {
-        console.log('Added Salary:', month.empAnnualSalary);
-        // monthlyTotal = 0;
-        monthlyTotal += Number(month.empAnnualSalary);
-        console.log('Should add:', monthlyTotal);
-        
-        return monthlyTotal;
-    }
-    
-    
-    
+   let monthTotal = 0;
+   for (let taco of employees) {
+       monthTotal += Number(taco.empAnnualSalary);
+       console.log('Added UP:', monthTotal);
+   }
+   
+   $('#monthlyTotal').append(monthlyTotal);
 }
 
 console.log('js ended');
