@@ -4,7 +4,6 @@ $(document).ready(readyNow);
 
 // variable to hold employees
 const employees = [];
-let monthlyTotal = 0;
 
 // function to run when jQuery is ready
 function readyNow() {
@@ -34,8 +33,9 @@ function collectEmployee() {
     // console log to show employees added
     console.log(employees);
 
+    // call other functions to run when click happens
     emptyInputs();
-    employeeDOM();
+    displayEmployee();
     calcMonthlySalary();
 
 }
@@ -51,9 +51,9 @@ function emptyInputs() {
 }
 
 // function to display employee on the DOM
-function employeeDOM() {
+function displayEmployee() {
     $('.employeeTable').empty();
-    // append to the DOM
+    // loop through employees and append to the DOM
     for (let i = 0; i < employees.length; i++) {
         let employeeInfo = employees[i];
 
@@ -84,12 +84,13 @@ function calcMonthlySalary() {
     // create variable to hold numbers from salary
     let monthTotal = 0;
     // loop through employees to add up salaries
-    for (let taco of employees) {
+    for (let month of employees) {
         // divide salary by 12 for months in a year
-        monthTotal += (taco.empAnnualSalary / 12);
+        monthTotal += (month.empAnnualSalary / 12);
         console.log('Monthly Costs:', monthTotal);
     }
 
+    // highlight total monthly on the DOM if over 20000
     if (monthTotal >= 20000) {
         $('#monthlyTotal').css("background-color", "red");
         console.log('Over Monthly Budget');
@@ -101,7 +102,6 @@ function calcMonthlySalary() {
     emptyDomInput.empty();
     // append to the DOM 
     emptyDomInput.append(`$ `, `${Math.round(monthTotal)}`);
-    
 } // end calcMonthlySalary
 
 

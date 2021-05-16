@@ -9,16 +9,17 @@ header {
     padding: 0;
     margin-top: 50px;
     margin-bottom: 10px;
-    margin-left: 10px;
+    margin-left: 150px;
 }
 
 .submitButton {
-    text-align: left;
-    margin-left: 10px;
+    text-align: right;
+    margin-right: 250px;
     margin-bottom: 10px;
 }
 
 main {
+    margin-top: 50px;
     margin-left: 10px;
     margin-bottom: 10px;
 }
